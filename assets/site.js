@@ -28,29 +28,29 @@
   const messages = {
     en: {
       sending: 'Sending…',
-      ready: 'Join the list',
-      success: 'Thanks. You’re on the list; we’ll get in touch if a beta place becomes available.',
       error: 'We couldn’t send your details. Please try again in a moment.',
       limited: 'Too many requests right now. Please try again later.'
     },
     it: {
       sending: 'Invio in corso…',
-      ready: 'Iscriviti',
-      success: 'Grazie. Ti contatteremo se si libererà un posto nella beta.',
       error: 'Non siamo riusciti a inviare i tuoi dati. Riprova tra poco.',
       limited: 'Ci sono troppe richieste al momento. Riprova più tardi.'
     }
   };
   const copy = messages[form.dataset.locale] || messages.en;
+  const betaBlock = form.closest('.beta-block');
   const button = form.querySelector('button[type="submit"]');
   const readyContent = button.innerHTML;
-  const status = form.querySelector('[data-form-message]');
+  const status = betaBlock.querySelector('[data-form-message]');
+  const betaNote = betaBlock.querySelector('[data-beta-note]');
+  const success = betaBlock.querySelector('[data-signup-success]');
   let sending = false;
+  let submitted = false;
 
   form.addEventListener('submit', async (event) => {
     if (!form.action || form.action === window.location.href) return;
     event.preventDefault();
-    if (sending || !form.reportValidity()) return;
+    if (sending || submitted || !form.reportValidity()) return;
     sending = true;
     button.disabled = true;
     button.textContent = copy.sending;
@@ -65,9 +65,11 @@
       });
       if (!response.ok) throw new Error(response.status === 429 ? 'limited' : 'failed');
       form.reset();
-      status.textContent = copy.success;
-      status.dataset.state = 'success';
-      status.focus();
+      submitted = true;
+      form.hidden = true;
+      betaNote.hidden = true;
+      success.hidden = false;
+      success.focus();
     } catch (error) {
       status.textContent = error.message === 'limited' ? copy.limited : copy.error;
       status.dataset.state = 'error';
