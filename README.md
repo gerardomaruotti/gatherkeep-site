@@ -1,6 +1,6 @@
-# OrbKeep beta interest site
+# Gatherkeep beta interest site
 
-A plain static, English and Italian landing page for the OrbKeep beta interest list. The public site is published from this repository's `main` branch through GitHub Pages at `https://gerardomaruotti.github.io/orbkeep/`.
+A plain static, English and Italian landing page for the Gatherkeep beta interest list. The public site is published from this repository's `main` branch through GitHub Pages at `https://gerardomaruotti.github.io/gatherkeep-site/`.
 
 ## Form
 
@@ -10,11 +10,13 @@ The list is for manual beta contact only. Formspree's free tier has a monthly su
 
 ## Graphics
 
-- `assets/orbkeep-icon.png` and `assets/orbkeep-icon-dark.png` are 256 px versions of the approved Default and Dark icons in `gatherkeep/Design/IconPreviews/Orb/sRGB/`.
-- `assets/library-framed.png` comes from the sample-content capture `gatherkeep/build/TagVisibilityEvidence/light.png` (1206 × 2622). It was framed as a Silver iPhone 17 Pro using [Frames CLI](https://github.com/viticci/frames-cli):
+- `assets/gatherkeep-icon.png` and `assets/gatherkeep-icon-dark.png` are 256 px exports of the approved Default and Dark stacked-card icons in `gatherkeep/Design/IconPreviews/StackedCards/sRGB/`.
+- `assets/library-framed.png` comes from the sample-content capture `gatherkeep/build/StackedCardsIntegration-20260927/Screenshots/library-light.png`; `assets/filter-framed.png` comes from `gatherkeep/build/UnifiedOrange-20260927/Screenshots/filters-dark.png`. Both are 1206 × 2622 simulator captures and were framed as a Silver iPhone 17 Pro using [Frames CLI](https://github.com/viticci/frames-cli):
 
   ```sh
-  frames frame --device "iPhone 17 Pro Portrait" --color Silver --output /tmp/orbkeep-framed light.png
+  frames frame --device "iPhone 17 Pro Portrait" --color Silver --output /tmp/gatherkeep-framed \
+    build/StackedCardsIntegration-20260927/Screenshots/library-light.png \
+    build/UnifiedOrange-20260927/Screenshots/filters-dark.png
   ```
 
 The app repository is not published with this site. Replace screenshots only with vetted sample content.
