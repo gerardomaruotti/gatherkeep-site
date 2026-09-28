@@ -4,7 +4,7 @@ A plain static, English and Italian landing page for the Gatherkeep beta interes
 
 ## Form
 
-Both localized forms post the same three fields (`name`, `email`, and `language`) to a dedicated Formspree form. The public form ID is in each page's `action` attribute; no account credentials belong in this repository. Formspree sends submission notifications to `maruotti@icloud.com`.
+Both localized forms post `email` and `language` to a dedicated Formspree form. The public form ID is in each page's `action` attribute; no account credentials belong in this repository. Formspree sends submission notifications to `maruotti@icloud.com`.
 
 The list is for manual beta contact only. Formspree's free tier has a monthly submission limit and short dashboard history; review notifications and export submissions regularly. Delete signups and notification emails when they are no longer needed or if the sender requests deletion.
 
