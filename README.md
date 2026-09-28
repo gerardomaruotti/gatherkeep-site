@@ -25,7 +25,7 @@ The app repository is not published with this site. Replace screenshots only wit
 - `assets/markdown-framed.png` uses the isolated Markdown preview fixture at `gatherkeep/build/MarkdownPreviewVerification/light.png`. The feature card crops the preview before test-only content.
 - `assets/voice-framed.png` uses the isolated voice fixture at `gatherkeep/build/VoiceNoteUXVerification/Voice UX Final-14_31_02_979-screenshot.png`. The wide section crops the test-only transcript line.
 - These three source screenshots were enlarged from 402 × 874 to 1206 × 2622 before framing with Frames CLI, preserving the app UI rather than redrawing it.
-- Six integration icons under `assets/icons/` come from [Lucide](https://lucide.dev/) ([ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE)).
+- The integration and FAQ icons under `assets/icons/` come from [Lucide](https://lucide.dev/) ([ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE)).
 
 ## Local preview
 
