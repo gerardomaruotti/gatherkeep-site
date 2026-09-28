@@ -2,19 +2,40 @@
   const form = document.querySelector('[data-signup-form]');
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
+
+  const root = document.documentElement;
+  const themeButton = document.querySelector('[data-theme-toggle]');
+  let storedTheme;
+  try { storedTheme = window.localStorage.getItem('gatherkeep-theme'); } catch { /* Private browsing can disable storage. */ }
+  if (storedTheme === 'light' || storedTheme === 'dark') root.dataset.theme = storedTheme;
+  const updateThemeLabel = () => {
+    if (!themeButton) return;
+    const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+    themeButton.setAttribute('aria-label', dark ? (document.documentElement.lang === 'it' ? 'Passa all’aspetto chiaro' : 'Switch to light appearance') : (document.documentElement.lang === 'it' ? 'Passa all’aspetto scuro' : 'Switch to dark appearance'));
+  };
+  updateThemeLabel();
+  themeButton?.addEventListener('click', () => {
+    const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { window.localStorage.setItem('gatherkeep-theme', root.dataset.theme); } catch { /* Keep the choice for this page. */ }
+    updateThemeLabel();
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeLabel);
+  const mobileMenu = document.querySelector('.mobile-menu');
+  mobileMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { mobileMenu.open = false; }));
   if (!form) return;
 
   const messages = {
     en: {
       sending: 'Sending…',
-      ready: 'Join the beta interest list',
+      ready: 'Join the list',
       success: 'Thanks. You’re on the list; we’ll get in touch if a beta place becomes available.',
       error: 'We couldn’t send your details. Please try again in a moment.',
       limited: 'Too many requests right now. Please try again later.'
     },
     it: {
       sending: 'Invio in corso…',
-      ready: 'Iscriviti alla lista di interesse',
+      ready: 'Iscriviti',
       success: 'Grazie. Ti contatteremo se si libererà un posto nella beta.',
       error: 'Non siamo riusciti a inviare i tuoi dati. Riprova tra poco.',
       limited: 'Ci sono troppe richieste al momento. Riprova più tardi.'
@@ -22,6 +43,7 @@
   };
   const copy = messages[form.dataset.locale] || messages.en;
   const button = form.querySelector('button[type="submit"]');
+  const readyContent = button.innerHTML;
   const status = form.querySelector('[data-form-message]');
   let sending = false;
 
@@ -53,7 +75,7 @@
     } finally {
       sending = false;
       button.disabled = false;
-      button.textContent = copy.ready;
+      button.innerHTML = readyContent;
     }
   });
 })();
