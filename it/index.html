@@ -32,29 +32,27 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow">Per iPhone e iPad</p>
-          <h1 id="hero-title">Tieni ciò che vuoi ritrovare.</h1>
+          <h1 id="hero-title">Tieni ciò che vuoi <span class="accent-word">ritrovare.</span></h1>
           <p class="intro">Salva link, note, foto e file in un unico posto. Ritrovali quando ti servono.</p>
 
           <div class="signup-card" id="beta">
-            <h2>Vuoi provare Gatherkeep?</h2>
-            <p>Lascia i tuoi dati e ti contatteremo quando ci saranno posti disponibili nella beta.</p>
-            <form class="signup-form" action="https://formspree.io/f/mvkgrbbk" method="post" data-signup-form data-locale="it">
+            <form class="signup-form" action="https://formspree.io/f/mvkgrbbk" method="post" aria-label="Iscriviti alla lista di interesse per la beta" data-signup-form data-locale="it">
               <input type="hidden" name="language" value="it">
               <div class="field-row">
                 <div class="form-field">
                   <label for="name">Nome</label>
-                  <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                  <input id="name" name="name" type="text" autocomplete="name" placeholder="Nome" maxlength="120" required>
                 </div>
                 <div class="form-field">
                   <label for="email">Indirizzo email</label>
-                  <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="Indirizzo email" maxlength="254" required>
                 </div>
               </div>
               <div class="honeypot" aria-hidden="true"><label for="company">Azienda</label><input id="company" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
               <button class="submit-button" type="submit">Iscriviti alla lista di interesse</button>
               <p class="form-message" data-form-message role="status" aria-live="polite" tabindex="-1"></p>
             </form>
-            <p class="privacy-hint">È una lista di interesse, non un invito automatico. Useremo nome ed email solo per contattarti sulla beta. <a href="privacy/">Informativa privacy</a></p>
+            <p class="privacy-hint">Ti contatteremo quando ci saranno posti nella beta. L’iscrizione alla lista di interesse non è un invito automatico. <a href="privacy/">Informativa privacy</a></p>
           </div>
         </div>
 
@@ -66,9 +64,6 @@
         </div>
       </section>
 
-      <section class="closing" aria-label="Cosa puoi fare con Gatherkeep">
-        <p>Acquisisci contenuti dall’app o dal menu Condividi. Organizzali e ritrovali con la ricerca.</p>
-      </section>
     </main>
 
     <footer class="site-footer">
