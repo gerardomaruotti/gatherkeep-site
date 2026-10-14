@@ -8,6 +8,13 @@ Both localized forms post `email` and `language` to a dedicated Formspree form. 
 
 The list is for manual beta contact only. Formspree's free tier has a monthly submission limit and short dashboard history; review notifications and export submissions regularly. Delete signups and notification emails when they are no longer needed or if the sender requests deletion. The replaceable beta conversion block is `.beta-block` in both landing pages. After release, replace that block with App Store links while keeping the feature sections.
 
+## Pages
+
+- `/`, `/privacy/`, `/support/` and their Italian counterparts under `/it/`. The support page is the Support URL for App Store Connect: `https://gerardomaruotti.github.io/gatherkeep-site/support/` (Italian: `/it/support/`).
+- Every page carries canonical, `hreflang` (`en`, `it`, `x-default` pointing at English), Open Graph and Twitter card tags. The share images are `assets/og-en.png` and `assets/og-it.png` (1200 × 630); `assets/apple-touch-icon.png` is a 180 px opaque icon.
+- There is no `sitemap.xml`; GitHub Pages project sites cannot serve a root `robots.txt`, so none was added. If one is added later, list all six URLs.
+- The beta form's `_gotcha` field (labelled Company / Azienda) is a Formspree honeypot. It is moved off-screen and marked `aria-hidden`, `inert` and `tabindex="-1"`; keep it hidden.
+
 ## Graphics
 
 - `assets/gatherkeep-icon.png` and `assets/gatherkeep-icon-dark.png` are 256 px exports of the approved Default and Dark stacked-card icons in `gatherkeep/Design/IconPreviews/StackedCards/sRGB/`.
@@ -26,6 +33,10 @@ The app repository is not published with this site. Replace screenshots only wit
 - `assets/voice-framed.png` uses the isolated voice fixture at `gatherkeep/build/VoiceNoteUXVerification/Voice UX Final-14_31_02_979-screenshot.png`. The wide section crops the test-only transcript line.
 - These three source screenshots were enlarged from 402 × 874 to 1206 × 2622 before framing with Frames CLI, preserving the app UI rather than redrawing it.
 - The integration and FAQ icons under `assets/icons/` come from [Lucide](https://lucide.dev/) ([ISC license](https://github.com/lucide-icons/lucide/blob/main/LICENSE)).
+
+### Generated images
+
+The `*-framed.png` files are the full-size masters and are not referenced by the pages. `tools/build-images.py` (needs `pip install pillow`) derives everything the pages serve: `<name>-400/800` in AVIF, WebP and palette PNG (the `<picture>` fallback), `og-en.png`, `og-it.png`, and `apple-touch-icon.png`. Re-run it from the repository root after replacing a master screenshot.
 
 ## Local preview
 
